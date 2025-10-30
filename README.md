@@ -14,8 +14,41 @@ path.join(__dirname, '../', 'views', 'shop.html')
 ```
 
 **Path Resolution Flow:**
-```
-__dirname (/routes) ’ .. (move up) ’ /project-root ’ views ’ shop.html
+
+| Step | Operation | Result |
+|------|-----------|--------|
+| 1 | Start with `__dirname` | `/project-root/routes` |
+| 2 | Apply `../` (move up) | `/project-root` |
+| 3 | Add `views` | `/project-root/views` |
+| 4 | Add `shop.html` | `/project-root/views/shop.html` |
+
+**More Examples:**
+
+```javascript
+// Example 1: Go up one level from routes
+__dirname = '/project-root/routes'
+path.join(__dirname, '..')
+// Result: /project-root
+
+// Example 2: Go up two levels
+__dirname = '/project-root/routes/admin'
+path.join(__dirname, '../../')
+// Result: /project-root
+
+// Example 3: Navigate to sibling directory
+__dirname = '/project-root/routes'
+path.join(__dirname, '../views')
+// Result: /project-root/views
+
+// Example 4: Navigate to nested directory
+__dirname = '/project-root/routes'
+path.join(__dirname, '../public/css/style.css')
+// Result: /project-root/public/css/style.css
+
+// Example 5: Multiple '..' in sequence
+__dirname = '/project-root/routes/api/v1'
+path.join(__dirname, '../../../views/home.html')
+// Result: /project-root/views/home.html
 ```
 
 ### 2. Centralizing root directory path with `util/path.js`
