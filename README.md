@@ -49,6 +49,12 @@ path.join(__dirname, '../public/css/style.css')
 __dirname = '/project-root/routes/api/v1'
 path.join(__dirname, '../../../views/home.html')
 // Result: /project-root/views/home.html
+
+// Note: '../../../' means "go up 3 levels"
+// Starting from: /project-root/routes/api/v1
+//   ../       → /project-root/routes/api (1 level up)
+//   ../../    → /project-root/routes     (2 levels up)
+//   ../../../ → /project-root            (3 levels up)
 ```
 
 ### 2. Centralizing root directory path with `util/path.js`
